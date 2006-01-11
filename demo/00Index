@@ -1,0 +1,9 @@
+biasedPlots	Demonstrates the biased plots that result from F-statistic
+  based feature selection with data where there are known groupings, 
+  followed by calculation and plotting of discriminant function scores.
+  [The 'accuracies' are also biased; use \code{defectiveCVdisc()} to 
+  demonstrate the effect]
+CVscoreplot	Demonstrates the methodology used by \code{cvscores()} to 
+  obtain scores (plotted using \code{scoreplot()}) that, because derived
+  from the scores for the successive 'test' sets at the successive steps
+  of the cross-validation, minimize bias. 
