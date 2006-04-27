@@ -31,7 +31,7 @@ function(x=USArrests,
     avv <- apply(x,vardim, mean)
     x <- sweep(x, vardim, avv,"-")}
 
-  svdx <- La.svd(x, method = c("dgesdd"))
+  svdx <- La.svd(x)
   h <- NULL
   if(cases=="rows"){
     g <- sweep(svdx$u, 2, svdx$d^scale.cases, "*")*sqrt(sc)
