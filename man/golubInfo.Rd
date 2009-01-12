@@ -2,7 +2,8 @@
 \alias{golubInfo}
 \docType{data}
 \title{Classifying factors for the 72 columns of the Golub data set}
-\description{
+\description{Details are given of the classifying factors for the 72
+  columns of the Golub data set.
 }
 \usage{data(golubInfo)}
 \format{
@@ -21,8 +22,6 @@ There are two types of Acute Lymphoblastic Leukemia (\code{allB} and
 \code{allT}), plus Acute Myoblastic Leukemia (\code{aml})
 }
   }
-}
-\details{
 }
 \source{See the help page for the dataset \code{golubMerge}, in the
 \code{golubEsets} package, for details of the source of the original

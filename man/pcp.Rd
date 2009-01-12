@@ -24,7 +24,7 @@ zero mean and unit deviance.  Takes precedence over the setting of
 a pure rotation of the variables. \code{scale.cases=1} weights a/c the 
 singular values}
   \item{log}{logical: should logarithms be taken, prior to the calculation?}
-  \item{sc}{the variable scores are divided by $\sqrt{sc-1}$. By default,
+  \item{sc}{the variable scores are divided by \eqn{sqrt{sc-1}}. By default,
 \code{sc} = number of cases}
   \item{reflect}{a vector of two elements, by default \code{c(1,1)}. 
 Use of -1 in one or both positions can be useful in reconciling results

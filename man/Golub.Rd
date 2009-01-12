@@ -10,13 +10,7 @@ These are a normalized version of the Golub leukemia data from the
 }
 \usage{data(Golub)}
 \format{
-  The format is:
- num [1:7129, 1:72] -1363.3 -1058.6  -541.5    74.3 -1110.1 ...
- - attr(*, "scaled:center")= num [1:72] 582 528 604 576 751 ...
- - attr(*, "scaled:scale")= num [1:72] 2474 2305 2378 2437 2438 ...
- - attr(*, "dimnames")=List of 2
-  ..$ : chr [1:7129] "AFFX-BioB-5_at" "AFFX-BioB-M_at" "AFFX-BioB-3_at" "AFFX-BioC-5_at" ...
-  ..$ : NULL
+  Numeric matrix: 7129 rows by 72 columns.
 }
 \details{
 Data have been normalized and are supplied, here, as a matrix.

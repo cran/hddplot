@@ -20,24 +20,17 @@ FALSE) }
   \item{FUN}{specifies the function used to measure separation between groups}
   \item{values}{if \code{TRUE}, F-values as well as the ordering are returned}
 }
-\details{
-}
 \value{
 Either (\code{values=FALSE}) a vector that orders the rows,
 or (\code{values=TRUE})
   \item{ord}{a vector that orders the rows}
   \item{stat}{ordered values of the statistic}
 }
-\references{}
 \author{John Maindonald}
-\note{
-}
-\seealso{ ~~objects to See Also as \code{\link{help}}, ~~~ }
 \examples{
 mat <- matrix(rnorm(1000), ncol=20)
 cl <- factor(rep(1:3, c(7,9,4)))
 ord <- orderFeatures(mat, cl)
-
 
 ## The function is currently defined as
 function(x, cl, subset=NULL, FUN=aovFbyrow, values=FALSE){

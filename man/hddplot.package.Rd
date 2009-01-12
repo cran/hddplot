@@ -3,8 +3,6 @@
 \alias{hddplot}
 \docType{package}
 \title{For high-dimensional data with known groups, derive scores for plotting}
-}
-
 \description{Cross-validated linear discriminant calculations
 determine the optimum number of features. Test and training
 scores from successive cross-validation steps determine, via a
@@ -41,7 +39,7 @@ Maintainer: John Maindonald <john.maindonald@anu.edu.au>
 \references{
 Maindonald, J.H. and Burden, C.J., 2005. Selection bias in plots of
 microarray or other data that have been sampled from a high-dimensional space.
-In R. May and A.J. Roberts, eds., {\em Proceedings of 12th
+In R. May and A.J. Roberts, eds., \emph{Proceedings of 12th
   Computational Techniques and Applications Conference CTAC-2004}, volume 46,
   pp. C59--C74. 
 

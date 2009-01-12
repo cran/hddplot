@@ -1,8 +1,8 @@
 Package: hddplot
 Type: Package
 Title: Use known groups in high-dimensional data to derive scores for plots
-Version: 0.51
-Date: 2006-04-27
+Version: 0.52
+Date: 2009-01-12
 Author: John Maindonald
 Maintainer: John Maindonald <john.maindonald@anu.edu.au>
 Depends: MASS
@@ -13,4 +13,4 @@ Description: Cross-validated linear discriminant calculations determine
   scores are projected, in order to plot them. Further functions are
   included that serve didactic purposes. 
 License: GPL version 2 or newer
-Packaged: Thu Apr 27 12:13:01 2006; johnm
+Packaged: Tue Jan 13 11:04:46 2009; johnm

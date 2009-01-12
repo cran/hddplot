@@ -2,13 +2,11 @@
 \alias{cvscores}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{For high-dimensional data with known groups, derive scores for plotting}
-
 \description{This is designed to used with the output from
 \code{cvdisc}.  Test and training scores from successive
 cross-validation steps determine, via a principal components
 calculation, a low-dimensional global space onto which test scores are
 projected, in order to plot them.}
-
 \usage{
 cvscores(cvlist = BMonly.cv, nfeatures = 3, ndisc = NULL, cl.other = factor("PB:f"), x.other = Golub.PBf, keepcols = NULL, print.progress = TRUE)
 }
@@ -38,7 +36,7 @@ as calculations proceed, the number of the current fold}
 }
 \references{Maindonald, J.H. and Burden, C.J., 2005. Selection bias in plots of
 microarray or other data that have been sampled from a high-dimensional space.
-In R. May and A.J. Roberts, eds., {\em Proceedings of 12th
+In R. May and A.J. Roberts, eds., \emph{Proceedings of 12th
   Computational Techniques and Applications Conference CTAC-2004}, volume 46,
   pp. C59--C74. 
 

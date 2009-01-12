@@ -45,16 +45,11 @@ etc.}
 training scores with their projections onto the global space.  This is
 not at present implemented}
 }
-\details{
-
-}
 \value{
 A graph is plotted.
 }
 \references{}
 \author{John Maindonald}
-\note{
-}
 \seealso{See also \code{\link{cvdisc}}, \code{\link{cvscores}}} 
 \examples{
 ## Use first 500 rows (expression values) of Golub, for demonstration.

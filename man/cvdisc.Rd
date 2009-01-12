@@ -31,9 +31,6 @@ number generator, in order to make calculations repeatable}
 as calculations proceed, the number of the current fold}
   \item{subset}{Allows the use of a subset of the samples (observations)}
 }
-\details{
-  ~~ If necessary, more details than the description above ~~
-}
 \value{
   \item{folds}{Each column gives, for one run of the cross-validation,
 numbers that identify the \code{nfold} distinct folds of the
@@ -52,7 +49,6 @@ to separate groups}
   \item{nfeatures}{Specifies the different numbers of features that were
 tried, to determine cross-validation accuracy in each instance}
 }
-\references{ ~put references to the literature/web site here ~ }
 \author{John Maindonald}
 \note{
 }

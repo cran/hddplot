@@ -25,16 +25,11 @@ all points will be included in the graph}
 some points have been omitted?}
   \item{\dots}{additional graphics parameters}
 }
-\details{
-}
 \value{
 Gives a qqplot
 }
 \references{ ~put references to the literature/web site here ~ }
 \author{John Maindonald}
-\note{
-}
-\seealso{}
 \examples{
 mat <- matrix(rnorm(1000), ncol=20)
 cl <- factor(rep(1:3, c(7,9,4)))
