@@ -21,16 +21,10 @@ reproducible results}
   \item{balanced}{logical: should subsets be as far as possible balanced
 with respect to the classifying factor?}
 }
-\details{
-}
 \value{
 a set of indices that identify the \code{nset} subsets
 }
-\references{}
 \author{John Maindonald}
-\note{
-}
-\seealso{ ~~objects to See Also as \code{\link{help}}, ~~~ }
 \examples{
 foldid <- divideUp(cl=rep(1:3, c(17,14,8)), nset=10)
 table(rep(1:3, c(17,14,8)), foldid)

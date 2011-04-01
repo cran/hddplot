@@ -25,16 +25,10 @@ two groups. In the first pass (fold), one to be training and the other test,
 with the roles then reversed in a second pass or fold.}
   \item{titles}{A character vector of length 2 giving titles for the two graphs}
 }
-\details{
-}
 \value{
 Two graphs are plotted.
 }
-\references{}
 \author{John Maindonald}
-\note{
-}
-\seealso{}
 \examples{
 mat <- matrix(rnorm(1000), ncol=20)
 cl <- factor(rep(1:3, c(7,9,4)))

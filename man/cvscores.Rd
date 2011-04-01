@@ -25,8 +25,6 @@ determine the low-dimensional global space}
   \item{print.progress}{Set to \code{TRUE} (default) for printing out,
 as calculations proceed, the number of the current fold}
 }
-\details{
-}
 \value{
   \item{scores}{Scores that can be plotted}
   \item{cl}{Factor that was used to classify observations into groups}

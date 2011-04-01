@@ -23,8 +23,6 @@ with the roles then reversed in a second pass or fold.}
 required}
   \item{print.acc}{logical: should accuracies be printed?}
 }
-\details{
-}
 \value{
   \item{sub1.2}{row numbers of features, by order of values of the group 
 separation measure, for the first subset (I) of the \code{x}}
@@ -33,11 +31,7 @@ separation measure, for the first subset (I) of the \code{x}}
 separation measure, for the second subset (II) of the \code{x}}
   \item{acc2.1}{accuracies, with II as training set and I as test}
 }
-\references{}
 \author{John Maindonald}
-\note{ 
-}
-\seealso{}
 \examples{
 mat <- matrix(rnorm(1000), ncol=20)
 cl <- factor(rep(1:3, c(7,9,4)))

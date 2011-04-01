@@ -32,19 +32,12 @@ number generator, in order to make calculations repeatable}
   \item{print.progress}{Set to \code{TRUE} (default) for printing out,
 as calculations proceed, the number of the current fold}
 }
-\details{
-}
 \value{
-  ~Describe the value returned
-  If it is a LIST, use
   \item{acc.resub}{resubstitution measure of 'accuracy'}
   \item{acc.sel1}{'accuracy' from cross-validation, with the initially
 selected features}
 }
-\references{}
 \author{John Maindonald}
-\note{ 
-}
 \seealso{\code{\link{cvdisc}}}
 \examples{
 mat <- matrix(rnorm(1000), ncol=20)

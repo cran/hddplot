@@ -50,8 +50,6 @@ to separate groups}
 tried, to determine cross-validation accuracy in each instance}
 }
 \author{John Maindonald}
-\note{
-}
 \seealso{See also \code{\link{cvscores}}, \code{\link{scoreplot}}}
 \examples{
 ## Use first 500 rows (expression values) of Golub, for demonstration.

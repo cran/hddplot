@@ -30,8 +30,6 @@ singular values}
 Use of -1 in one or both positions can be useful in reconciling results
 with output from other software}
 }
-\details{
-}
 \value{
   \item{g}{case scores}
   \item{h}{variable scores}
@@ -39,10 +37,7 @@ with output from other software}
   \item{sdev}{singular values, divides by the square root of one less than
 the number of cases}
 }
-\references{}
 \author{John Maindonald}
-\note{
-}
 \seealso{\code{\link{La.svd}}}
 \examples{
 USArrests.svd <- pcp(x = USArrests)

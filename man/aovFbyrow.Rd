@@ -20,10 +20,7 @@ part of the calculation, for handling the calculations efficently
 \value{
 one F-statistic for each row of \code{x}
 }
-\references{}
 \author{John Maindonald}
-\note{
-}
 \seealso{See also \code{\link{orderFeatures}}}
 \examples{
 mat <- matrix(rnorm(1000), ncol=20)

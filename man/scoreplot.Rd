@@ -48,7 +48,6 @@ not at present implemented}
 \value{
 A graph is plotted.
 }
-\references{}
 \author{John Maindonald}
 \seealso{See also \code{\link{cvdisc}}, \code{\link{cvscores}}} 
 \examples{
