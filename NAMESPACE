@@ -1,0 +1,5 @@
+## Export all
+
+export(accTrainTest, aovFbyrow, cvdisc, cvscores, defectiveCVdisc,
+       divideUp, orderFeatures, pcp, plotTrainTest, qqthin, scoreplot,
+       simulateScores)

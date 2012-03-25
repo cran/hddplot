@@ -2,18 +2,22 @@ Package: hddplot
 Type: Package
 Title: Use known groups in high-dimensional data to derive scores for
         plots
-Version: 0.54
-Date: 2011-04-01
+Version: 0.55
+Date: 2012-03-25
 Author: John Maindonald
 Maintainer: John Maindonald <john.maindonald@anu.edu.au>
-Depends: MASS
 Description: Cross-validated linear discriminant calculations determine
         the optimum number of features. Test and training scores from
         successive cross-validation steps determine, via a principal
         components calculation, a low-dimensional global space onto
         which test scores are projected, in order to plot them. Further
         functions are included that serve didactic purposes.
+LazyLoad: true
+LazyData: true
+Depends: R (>= 2.10.0), MASS
+ZipData: yes
 License: GPL (>= 2)
-Packaged: 2011-03-31 10:38:21 UTC; johnm
+URL: http://www.maths.anu.edu.au/~johnm
 Repository: CRAN
-Date/Publication: 2011-03-31 15:18:43
+Packaged: 2012-03-25 07:27:40 UTC; johnm
+Date/Publication: 2012-03-25 09:19:51
