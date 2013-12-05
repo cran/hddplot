@@ -7,32 +7,35 @@ There is provision for the plottting of two sets of scores on the same
 graph, possibly with different classifying factors.  The function is
 designed for use with output from \code{cvscores()} or from
 \code{simulateScores()}. This is an alpha version!  Suggestions for
-code changes and/or enhancements that will improve the graphs will be 
+code changes and/or enhancements that will improve the graphs will be
 welcomed.
 }
 \usage{
-scoreplot(scorelist = miniG.scores, plot.disc = 1:2, xlab = NULL, ylab = NULL, params = NULL, circle = NULL, cl.circle = NULL, circle.pos = c(1, 1), adj.circle = 1, adj.title = 0.5, join.legends = TRUE, prefix.title = "", cex.title = 1, ratio = 1, plot.folds = FALSE)
+scoreplot(scorelist, plot.disc = 1:2, xlab = NULL, ylab = NULL, params = NULL,
+          circle = NULL, cl.circle = NULL, circle.pos = c(1, 1), adj.circle = 1,
+          adj.title = 0.5, join.legends = TRUE, prefix.title = "", cex.title = 1,
+          ratio = 1, plot.folds = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{scorelist}{list, with elements \code{scores} (a matrix of scores)
-\code{cl} (a classifying factor), \code{other} (optional, a further sets 
+\code{cl} (a classifying factor), \code{other} (optional, a further sets
 of scores), \code{cl.other} (a a classifying factor for \code{other},
 optional) and \code{nfeatures} (optional, used to label the graph)}
   \item{plot.disc}{choice of columns of \code{scorelist} to plot}
   \item{xlab}{label for x-axis}
   \item{ylab}{label for y-axis}
-  \item{params}{List, with optional elements (lists) \code{points}, 
+  \item{params}{List, with optional elements (lists) \code{points},
 \code{other}, \code{circle} and \code{legend}.  Allowed list elements
-for \code{points} and \code{other} are \code{cex}, \code{lwd}, \code{pch} 
-and \code{col}. For \code{circle} they are \code{cex}, \code{lwd} and 
+for \code{points} and \code{other} are \code{cex}, \code{lwd}, \code{pch}
+and \code{col}. For \code{circle} they are \code{cex}, \code{lwd} and
 \code{col}.  For \code{legend}, they are \code{cex} and \code{cex.other}}
   \item{circle}{identifies points that are to be circled}
   \item{cl.circle}{different colors may be used for different
 points, according to levels of \code{cl.circle}}
   \item{circle.pos}{This is a vector of length 2, that specifies where
 to place the legend information for the circling of points.
-Possibilities are \code{c(0,0)} (left, below), \code{c(1,1)} (right, above), 
+Possibilities are \code{c(0,0)} (left, below), \code{c(1,1)} (right, above),
 etc.}
   \item{adj.circle}{controls positioning of circle legend}
   \item{adj.title}{controls positioning of title}
@@ -49,35 +52,35 @@ not at present implemented}
 A graph is plotted.
 }
 \author{John Maindonald}
-\seealso{See also \code{\link{cvdisc}}, \code{\link{cvscores}}} 
+\seealso{See also \code{\link{cvdisc}}, \code{\link{cvscores}}}
 \examples{
 ## Use first 500 rows (expression values) of Golub, for demonstration.
 data(Golub)
 data(golubInfo)
-attach(golubInfo) 
+attach(golubInfo)
 miniG.BM <- Golub[1:500, BM.PB=="BM"]  # 1st 500 rows only
-cancer.BM <- cancer[BM.PB=="BM"] 
+cancer.BM <- cancer[BM.PB=="BM"]
 miniG.cv <- cvdisc(miniG.BM, cl=cancer.BM, nfeatures=1:10,
                     nfold=c(3,1))
-miniG.scores <- cvscores(cvlist=miniG.cv, nfeatures=4, 
-                         cl.other=NULL) 
+miniG.scores <- cvscores(cvlist=miniG.cv, nfeatures=4,
+                         cl.other=NULL)
 subsetB <- (cancer=="allB") & (tissue.mf \%in\% c("BM:f","BM:m","PB:m"))
-tissue.mfB <- tissue.mf[subsetB, drop=TRUE] 
-scoreplot(scorelist=miniG.scores, cl.circle=tissue.mfB, 
-       circle=tissue.mfB\%in\%c("BM:f","BM:m"), 
-       params=list(circle=list(col=c("cyan","gray"))), 
-       prefix="BM samples -") 
-detach(golubInfo) 
+tissue.mfB <- tissue.mf[subsetB, drop=TRUE]
+scoreplot(scorelist=miniG.scores, cl.circle=tissue.mfB,
+       circle=tissue.mfB\%in\%c("BM:f","BM:m"),
+       params=list(circle=list(col=c("cyan","gray"))),
+       prefix="BM samples -")
+detach(golubInfo)
 
 ## The function is currently defined as
-  function(scorelist=BMonly.scores, plot.disc=1:2,
+  function(scorelist, plot.disc=1:2,
            xlab=NULL, ylab=NULL, params=NULL,
            circle=NULL, cl.circle=NULL, circle.pos=c(1,1),
            adj.circle=1,
            adj.title=0.5, join.legends=T, prefix.title="Golub data - ",
            cex.title=1.0, ratio=1, plot.folds=FALSE ){
     library(MASS)
-    combine.params <- 
+    combine.params <-
       function(params=list(circle=list(col=c("cyan","gray")))){
         default.params=list(points=list(cex=1, lwd=1.25, pch=1:8, col=1:8),
           other=list(cex=0.65, lwd=1.25, pch=13:9, col=c(6:8,5:1)),
@@ -115,7 +118,7 @@ detach(golubInfo)
       levnum <- unclass(cl.other)
       levnames.other <- levels(cl.other)
       intlev.other <- unclass(cl.other)
-      ngp.other <- length(levels(cl.other))      
+      ngp.other <- length(levels(cl.other))
     }
     n1 <- plot.disc[1]; n2 <- plot.disc[2]
     intlev <- unclass(cl)
@@ -149,7 +152,7 @@ detach(golubInfo)
     mtext(side=3, line=(top.pos+1), paste(prefix.title,
             nfeatures, "features"), cex=cex.title, adj=adj.title)
     ypos.legend <- ypos+(top.pos-0.45)*chh*0.8
-    
+
     if(join.legends&!is.null(cl.other)){
       leg.info <- legend(xmid, ypos.legend, xjust=0.5, yjust=0, plot=FALSE,
                          x.intersp=0.5, ncol=ngp, legend=levnames,
@@ -187,7 +190,7 @@ detach(golubInfo)
                           col=params$other$col, ncol=ngp.other,
                           pt.lwd=params$other$lwd,
                           pt.cex=params$other$cex,
-                          legend=levnames.other, 
+                          legend=levnames.other,
                           cex=params$legend$cex.other,
                           bty="n")
     if(!is.null(cl.other)&join.legends)

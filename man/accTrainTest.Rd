@@ -4,15 +4,17 @@
 \title{Two subsets of data each take in turn the role of test set}
 \description{
 A division of data is specified, for use of linear discriminant analysis,
-into a training and test set. Feature selection and model fitting is 
+into a training and test set. Feature selection and model fitting is
 formed, first with I/II as training/test, then with II/I as training/test
 }
 \usage{
-accTrainTest(x = Golub.BM, cl = cancer.BM, traintest = gp.id, nfeatures = NULL, print.acc = FALSE)
+accTrainTest(x = matrix(rnorm(1000), ncol=20), cl = factor(rep(1:3,c(7,9,4))),
+ traintest = divideUp(cl, nset=2), nfeatures = NULL, print.acc = FALSE,
+ print.progress=TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{Matrix; rows are features, and columns are observations 
+  \item{x}{Matrix; rows are features, and columns are observations
 ('samples')}
   \item{cl}{Factor that classifies columns into groups that will classify
 the data for purposes of discriminant calculations}
@@ -22,12 +24,13 @@ with the roles then reversed in a second pass or fold.}
   \item{nfeatures}{integer: numbers of features for which calculations are
 required}
   \item{print.acc}{logical: should accuracies be printed?}
+  \item{print.progress}{logical: should progress by feature number be printed?}
 }
 \value{
-  \item{sub1.2}{row numbers of features, by order of values of the group 
+  \item{sub1.2}{row numbers of features, by order of values of the group
 separation measure, for the first subset (I) of the \code{x}}
   \item{acc1.2}{accuracies, with I as training set and II as test}
-  \item{sub2.1}{row numbers of features, by order of values of the group 
+  \item{sub2.1}{row numbers of features, by order of values of the group
 separation measure, for the second subset (II) of the \code{x}}
   \item{acc2.1}{accuracies, with II as training set and I as test}
 }
@@ -37,11 +40,11 @@ mat <- matrix(rnorm(1000), ncol=20)
 cl <- factor(rep(1:3, c(7,9,4)))
 gp.id <- divideUp(cl, nset=2)
 accTrainTest(x=mat, cl=cl, traintest=gp.id,
-             nfeatures=1:16, print.acc=TRUE)
+             nfeatures=1:16, print.acc=TRUE, print.progress=TRUE)
 
 ## The function is currently defined as
-function(x=Golub.BM, cl=cancer.BM, traintest=gp.id,
-           nfeatures=NULL, print.acc=FALSE){
+function(x=matrix(rnorm(1000), ncol=20), cl = factor(rep(1:3, c(7,9,4))),
+         traintest=divideUp(cl, nset=2), nfeatures=NULL, print.acc=FALSE){
     traintest <- factor(traintest)
     train <- traintest==levels(traintest)[1]
     testset <- traintest==levels(traintest)[2]
@@ -68,7 +71,7 @@ function(x=Golub.BM, cl=cancer.BM, traintest=gp.id,
     df2 <- data.frame(t(x[ord, testset]))
     acc1 <- acc2 <- numeric(max(nfeatures))
     for(i in nfeatures){
-      cat(paste(i, ":", sep=""))
+      if(print.progress)cat(paste(i, ":", sep=""))
       df1.lda <- lda(df1[, sub1[1:i], drop=FALSE], cl1)
       hat2 <- predict(df1.lda, newdata=df2[, sub1[1:i], drop=FALSE])$class
       tab <- table(hat2, cl2)

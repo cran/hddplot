@@ -8,7 +8,7 @@
 \usage{data(golubInfo)}
 \format{
   A data frame with 72 observations on the following 6 variables,
-that identifies the samples (observations) in the daa set \code{Golub}
+that identifies the samples (observations) in the data set \code{Golub}
   \describe{
     \item{\code{Samples}}{a numeric vector: sample number}
     \item{\code{BM.PB}}{a factor with levels \code{BM} (from bone marrow) 

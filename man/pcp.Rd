@@ -8,7 +8,8 @@ Packages results from an SVD on what can be either a cases by variables
 and related calculations
 }
 \usage{
-pcp(x = USArrests, varscores = TRUE, cases = "rows", center = "vars", standardize = FALSE, scale.cases = 1, log = FALSE, sc = 1, reflect = c(1, 1))
+pcp(x = USArrests, varscores = TRUE, cases = "rows", center = "vars",
+    standardize = FALSE, scale.cases = 1, log = FALSE, sc = 1, reflect = c(1, 1))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -18,15 +19,15 @@ pcp(x = USArrests, varscores = TRUE, cases = "rows", center = "vars", standardiz
   \item{center}{logical: if set to \code{"vars"}, then values of variables
 will be centered}
   \item{standardize}{logical: should values of variables be standardized to
-zero mean and unit deviance.  Takes precedence over the setting of 
+zero mean and unit deviance.  Takes precedence over the setting of
 \code{center}}
-  \item{scale.cases}{set to a value in [0,1]. \code{scale.cases=0} gives 
-a pure rotation of the variables. \code{scale.cases=1} weights a/c the 
+  \item{scale.cases}{set to a value in [0,1]. \code{scale.cases=0} gives
+a pure rotation of the variables. \code{scale.cases=1} weights a/c the
 singular values}
   \item{log}{logical: should logarithms be taken, prior to the calculation?}
   \item{sc}{the variable scores are divided by \eqn{sqrt{sc-1}}. By default,
 \code{sc} = number of cases}
-  \item{reflect}{a vector of two elements, by default \code{c(1,1)}. 
+  \item{reflect}{a vector of two elements, by default \code{c(1,1)}.
 Use of -1 in one or both positions can be useful in reconciling results
 with output from other software}
 }
@@ -67,7 +68,7 @@ function(x=USArrests,
   if(log)x <- log(x, base=2)
   if(standardize){
     avv <- apply(x, vardim, mean)
-    sdv <- apply(x, vardim, sd)        
+    sdv <- apply(x, vardim, sd)
     x <- sweep(x, vardim, avv,"-")
     x <- sweep(x, vardim, sdv,"/")
   }

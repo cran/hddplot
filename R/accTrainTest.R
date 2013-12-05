@@ -1,6 +1,7 @@
 "accTrainTest" <-
-function(x=Golub.BM, cl=cancer.BM, traintest=gp.id,
-           nfeatures=NULL, print.acc=FALSE){
+function(x=matrix(rnorm(1000), ncol=20), cl=factor(rep(1:3,c(7,9,4))),
+         traintest=divideUp(cl, nset=2), nfeatures=NULL, print.acc=FALSE,
+         print.progress=TRUE){
     traintest <- factor(traintest)
     train <- traintest==levels(traintest)[1]
     testset <- traintest==levels(traintest)[2]
@@ -27,7 +28,7 @@ function(x=Golub.BM, cl=cancer.BM, traintest=gp.id,
     df2 <- data.frame(t(x[ord, testset]))
     acc1 <- acc2 <- numeric(max(nfeatures))
     for(i in nfeatures){
-      cat(paste(i, ":", sep=""))
+      if(print.progress)cat(paste(i, ":", sep=""))
       df1.lda <- lda(df1[, sub1[1:i], drop=FALSE], cl1)
       hat2 <- predict(df1.lda, newdata=df2[, sub1[1:i], drop=FALSE])$class
       tab <- table(hat2, cl2)

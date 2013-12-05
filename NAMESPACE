@@ -3,3 +3,5 @@
 export(accTrainTest, aovFbyrow, cvdisc, cvscores, defectiveCVdisc,
        divideUp, orderFeatures, pcp, plotTrainTest, qqthin, scoreplot,
        simulateScores)
+import(MASS)
+importFrom(multtest, mt.maxT)

@@ -1,8 +1,8 @@
 "qqthin" <-
-function(x, y, ends=c(.01,.99), eps=0.001, 
+function(x, y, ends=c(.01,.99), eps=0.001,
            xlab = deparse(substitute(x)), adj.xlab=NULL,
            ylab = deparse(substitute(y)), show.line=TRUE,
-           centerline=TRUE, ...){
+           print.thinning.details=TRUE, centerline=TRUE, ...){
     ## qqthin() is a substitute for qqplot(), that thins
     ## out plotted points from the region where they are
     ## dense.  Apart from the overlaid curve that shows
@@ -41,11 +41,13 @@ function(x, y, ends=c(.01,.99), eps=0.001,
     n2 <- max(subs[c(0,diff(subs))>1])
     ns1 <- match(n1, subs)
     ns2 <- match(n2, subs)
-    print(paste("Graph retains", length(subs), "points."))
+    if(print.thinning.details)
+        print(paste("Graph retains", length(subs), "points."))
     if(centerline)
       lines(smooth.spline(x[subs[ns1:ns2]], y[subs[ns1:ns2]]),
             col="grey", lwd=2)
   }
     if(show.line)abline(0, 1, col="red")
+    invisible(length(subs))
   }
 

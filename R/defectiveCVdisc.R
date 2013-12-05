@@ -1,21 +1,22 @@
 "defectiveCVdisc" <-
-function(x=GolubB, cl=tissue.mfB, nfold=NULL, FUN=aovFbyrow,
+function(x, cl, nfold=NULL, FUN=aovFbyrow,
            nfeatures=2, seed=31, funda=lda, foldids=NULL,
            subset=NULL, print.progress=TRUE){
     ## Option to omit one or more points
     if(!is.null(subset)) cl[!is.na(cl)][!subset] <- NA
+    if(length(nfold)==1)nfold <- c(nfold,1)
     if(any(is.na(cl))){x <- x[,!is.na(cl)]
                        cl <- cl[!is.na(cl)]
                      }
     nobs <- dim(x)[2]
-    ## Get fold information from foldids, if specified, 
+    ## Get fold information from foldids, if specified,
     ## else if nfold is not specified, use leave-one-out CV
     if(!is.null(foldids))
       nfold <- c(length(unique(foldids)), dim(foldids)[2])
     if(is.null(nfold)&is.null(foldids))nfold <- sum(!is.na(cl))
     else if(nfold[1]==nobs)foldids <- sample(1:nfold[1])
     else foldids <- sapply(1:nfold[2], function(x)
-                     divideUp(cl, nset=nfold[1]))        
+                     divideUp(cl, nset=nfold[1]))
     if(length(nfold)==1)nfold <- c(nfold,1)
     cl <- factor(cl)
     ngp <- length(levels(cl))
@@ -26,11 +27,10 @@ function(x=GolubB, cl=tissue.mfB, nfold=NULL, FUN=aovFbyrow,
       print(paste(1,":", dim(x)[1], " will be assigned.", sep=""))
       rownames(x) <- genes
     }
-    require(MASS)
     if(!is.null(seed))set.seed(seed)
     Fcut <- NULL
     maxgenes <- max(nfeatures)
-    
+
     stat <- FUN(x=x, cl)
     Fcut <- list(F=sort(stat, decreasing=TRUE)[nfeatures],
                  df=c(ngp-1, nobs-ngp))
@@ -58,7 +58,7 @@ function(x=GolubB, cl=tissue.mfB, nfold=NULL, FUN=aovFbyrow,
       for(k in 1:nfold[2])
       {
         foldk <- foldids[,k]
-        ufold <- sort(unique(foldk))      
+        ufold <- sort(unique(foldk))
         for(i in ufold){
           testset <- (1:nobs)[foldk==i]
           trainset <- (1:nobs)[foldk!=i]
@@ -74,7 +74,7 @@ function(x=GolubB, cl=tissue.mfB, nfold=NULL, FUN=aovFbyrow,
         if(k==1)tab <- tabk else tab <- tab+tabk
       }
       acc.sel1[ng] <- sum(tab[row(tab)==col(tab)])/sum(tab)
-      }      
+      }
     }
     if(print.progress)cat("\n")
     invisible(list(acc.resub=acc.resub, acc.sel1=acc.sel1, genes=genes.ord))

@@ -8,11 +8,12 @@ a specified range, with feature selection repeated at each step of the
 cross-validation.
 }
 \usage{
-cvdisc(x = GolubB, cl = tissue.mfB, nfold = c(10,1), test = "f", nfeatures = 2, seed = 31, funda = lda, print.progress = TRUE, subset = NULL)
+cvdisc(x, cl, nfold = c(10,1), test = "f", nfeatures = 2, seed = 31,
+       funda = lda, print.progress = TRUE, subset = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{Matrix; rows are features, and columns are observations 
+  \item{x}{Matrix; rows are features, and columns are observations
 ('samples')}
   \item{cl}{Factor that classifies columns into groups}
   \item{nfold}{Number of folds for the cross-validation. Optionally, a second
@@ -20,7 +21,7 @@ number species the number of repeats of the cross-validation.
 }
   \item{test}{What statistic will be used to measure separation between
 groups? Currently \code{"f"} is the only possibility.}
-  \item{nfeatures}{Specifies the different numbers of features (e.g., 1:10) 
+  \item{nfeatures}{Specifies the different numbers of features (e.g., 1:10)
 that will be tried, to determine cross-validation accuracy in each
 instance}
   \item{seed}{This can be used to specify a starting value for the random
@@ -35,7 +36,7 @@ as calculations proceed, the number of the current fold}
   \item{folds}{Each column gives, for one run of the cross-validation,
 numbers that identify the \code{nfold} distinct folds of the
 cross-validation}
-  \item{xUsed}{returns the rows of \code{x} that were used, 
+  \item{xUsed}{returns the rows of \code{x} that were used,
 in at least one fold}
   \item{cl}{Factor that classifies columns into groups}
   \item{acc.cv}{Cross-validated accuracy}
@@ -44,7 +45,7 @@ number of repeats, identifying the features chosen at each repeat of
 each fold.  (for \code{k} < \code{max(nfeatures)} features, take the
 initial \code{k} rows}
   \item{Fmatrix}{Array, with the same dimensions as \code{genelist},
-that gives the anova F-statistic when that feature is used on its own 
+that gives the anova F-statistic when that feature is used on its own
 to separate groups}
   \item{nfeatures}{Specifies the different numbers of features that were
 tried, to determine cross-validation accuracy in each instance}
@@ -55,9 +56,9 @@ tried, to determine cross-validation accuracy in each instance}
 ## Use first 500 rows (expression values) of Golub, for demonstration.
 data(Golub)
 data(golubInfo)
-attach(golubInfo) 
+attach(golubInfo)
 miniG.BM <- Golub[1:500, BM.PB=="BM"]  # 1st 500 rows only
-cancer.BM <- cancer[BM.PB=="BM"] 
+cancer.BM <- cancer[BM.PB=="BM"]
 miniG.cv <- cvdisc(miniG.BM, cl=cancer.BM, nfeatures=1:10,
                     nfold=c(3,1))
 ## Plot cross-validated accuracy, as a function of number of features
@@ -65,7 +66,7 @@ plot(miniG.cv$acc.cv, type="l")
 
 
 ## The function is currently defined as
-function(x=GolubB, cl=tissue.mfB, nfold=NULL, test="f",
+function(x, cl, nfold=NULL, test="f",
            nfeatures=2, seed=31, funda=lda, print.progress=TRUE,
            subset=NULL){
     ## If nfold is not specified, use leave-one-out CV
@@ -110,7 +111,7 @@ function(x=GolubB, cl=tissue.mfB, nfold=NULL, test="f",
       if(print.progress) cat(paste(i,":",sep=""))
       trainset <- (1:nobs)[foldk!=i]
       cli <- factor(cl[trainset])
-      
+
       stat <- aovFbyrow(x=x[, trainset], cl=cli)
       ordi <- order(-abs(stat))[1:maxgenes]
       genelist[,i, k] <- genes[ordi]
@@ -128,7 +129,7 @@ function(x=GolubB, cl=tissue.mfB, nfold=NULL, test="f",
     for(k in 1:nfold[2])
       {
         foldk <- foldids[,k]
-        ufold <- sort(unique(foldk))      
+        ufold <- sort(unique(foldk))
       for(i in ufold){
         testset <- (1:nobs)[foldk==i]
         trainset <- (1:nobs)[foldk!=i]

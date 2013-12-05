@@ -8,7 +8,8 @@ cross-validation steps determine, via a principal components
 calculation, a low-dimensional global space onto which test scores are
 projected, in order to plot them.}
 \usage{
-cvscores(cvlist = BMonly.cv, nfeatures = 3, ndisc = NULL, cl.other = factor("PB:f"), x.other = Golub.PBf, keepcols = NULL, print.progress = TRUE)
+cvscores(cvlist, nfeatures, ndisc = NULL, cl.other,
+         x.other, keepcols = NULL, print.progress = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -36,7 +37,7 @@ as calculations proceed, the number of the current fold}
 microarray or other data that have been sampled from a high-dimensional space.
 In R. May and A.J. Roberts, eds., \emph{Proceedings of 12th
   Computational Techniques and Applications Conference CTAC-2004}, volume 46,
-  pp. C59--C74. 
+  pp. C59--C74.
 
 \url{http://anziamj.austms.org.au/V46/CTAC2004/Main} [March 15, 2005]}
 \author{John Maindonald}
@@ -50,16 +51,15 @@ data(Golub)
 data(golubInfo)
 attach(golubInfo)
 miniG.BM <- Golub[1:500, BM.PB=="BM"]  # 1st 500 rows only
-cancer.BM <- cancer[BM.PB=="BM"] 
+cancer.BM <- cancer[BM.PB=="BM"]
 miniG.cv <- cvdisc(miniG.BM, cl=cancer.BM, nfeatures=1:10,
                     nfold=c(3,1))
-miniG.scores <- cvscores(cvlist=miniG.cv, nfeatures=4, 
-                         cl.other=NULL) 
-detach(golubInfo) 
+miniG.scores <- cvscores(cvlist=miniG.cv, nfeatures=4,
+                         cl.other=NULL)
+detach(golubInfo)
 
 ## The function is currently defined as
-function(cvlist=BMonly.cv, nfeatures=3, ndisc=NULL,
-           cl.other=factor("PB:f"), x.other=Golub.PBf,
+function(cvlist, nfeatures, ndisc=NULL, cl.other, x.other,
            keepcols=NULL, print.progress=TRUE
            ){
     library(MASS)
@@ -89,7 +89,7 @@ function(cvlist=BMonly.cv, nfeatures=3, ndisc=NULL,
     else other.scores <- NULL
     for(k in 1:nfold[2]){
       foldk <- foldids[,k]
-      ufold <- sort(unique(foldk))      
+      ufold <- sort(unique(foldk))
       j <- 0
       for(i in ufold){
         j <- j+1
@@ -115,7 +115,7 @@ function(cvlist=BMonly.cv, nfeatures=3, ndisc=NULL,
     fitscores <- array(0, dim=c(nrow=nobs, ncol=ndisc, nleaf=nfold[2]))
     for(k in 1:nfold[2]){
       foldk <- foldids[,k]
-      ufold <- sort(unique(foldk))    
+      ufold <- sort(unique(foldk))
 ##      ntimes.genes <- table(cvlist$genelist[1:nfeatures,,k])
       av <- colMeans(df)
       j <- 0
@@ -143,7 +143,7 @@ function(cvlist=BMonly.cv, nfeatures=3, ndisc=NULL,
       }
     }
     fitscores <- apply(fitscores, 1:2, mean)
-    
+
     if(!is.null(cl.other)){
       Fmatrix <- cvlist$Fmatrix
       ord <- order(Fmatrix)[1:nfeatures]

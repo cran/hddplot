@@ -3,11 +3,12 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Generate linear discriminant scores from random data, after selection}
 \description{
-Simulates the effect of generating scores from random data, possibly 
-with predicted scores calculates also for additional 'observations' 
+Simulates the effect of generating scores from random data, possibly
+with predicted scores calculates also for additional 'observations'
 }
 \usage{
-simulateScores(nrows = 7129, cl = rep(1:3, c(19, 10, 2)), x = NULL, cl.other = NULL, x.other = NULL, nfeatures = 15, dimen=2, seed = NULL)
+simulateScores(nrows = 7129, cl = rep(1:3, c(19, 10, 2)), x = NULL, cl.other = NULL,
+               x.other = NULL, nfeatures = 15, dimen=2, seed = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -16,7 +17,7 @@ simulateScores(nrows = 7129, cl = rep(1:3, c(19, 10, 2)), x = NULL, cl.other = N
   \item{x}{data matrix, by default randomly generated}
   \item{cl.other}{classifying factor for additional observations}
   \item{x.other}{additional observations}
-  \item{nfeatures}{number of features to select (by default uses 
+  \item{nfeatures}{number of features to select (by default uses
 aov F-statistic)}
   \item{dimen}{number of sets of discriminant scores to retain (at most
 one less than number of levels of \code{cl})}
@@ -40,11 +41,11 @@ plot(scorelist$scores, col=unclass(scorelist$cl), pch=16)
 
 ## The function is currently defined as
 simulateScores <-
-  function (nrows = 7129, cl = rep(1:3, c(19, 10, 2)), x = NULL, 
-            cl.other = NULL, x.other = NULL, nfeatures = 15, dimen = 2, 
-            seed = NULL) 
+  function (nrows = 7129, cl = rep(1:3, c(19, 10, 2)), x = NULL,
+            cl.other = NULL, x.other = NULL, nfeatures = 15, dimen = 2,
+            seed = NULL)
 {
-  if (!is.null(seed)) 
+  if (!is.null(seed))
     set.seed(seed)
   m <- length(cl)
   m.other <- length(cl.other)
@@ -57,15 +58,15 @@ simulateScores <-
     x.other <- matrix(rnorm(nrows * m.other), nrow = nrows)
     rownames(x.other) <- paste(1:nrows)
   }
-  if (is.numeric(cl)) 
+  if (is.numeric(cl))
     cl <- paste("Gp", cl, sep = "")
   if(!is.null(cl.other)){
-    if (is.numeric(cl.other)) 
+    if (is.numeric(cl.other))
       cl.other <- paste("Gp", cl.other, sep = "")
     cl.other <- factor(cl.other)
-  } 
+  }
   cl <- factor(cl)
-  if (dimen > length(levels(cl)) - 1) 
+  if (dimen > length(levels(cl)) - 1)
     dimen <- length(levels(cl)) - 1
   ordfeatures <- orderFeatures(x, cl = cl, values = TRUE)
   stat <- ordfeatures$stat[1:nfeatures]
@@ -74,11 +75,11 @@ simulateScores <-
   xUseOther.ord <- data.frame(t(x.other[ord.use, ]))
   ordUse.lda <- lda(xUse.ord, grouping = cl)
   scores <- predict(ordUse.lda, dimen = dimen)$x
-  if(!is.null(cl.other))  
-    scores.other <- predict(ordUse.lda, newdata = xUseOther.ord, 
+  if(!is.null(cl.other))
+    scores.other <- predict(ordUse.lda, newdata = xUseOther.ord,
                             dimen = dimen)$x else
   scores.other <- NULL
-  invisible(list(scores = scores, cl = cl, other = scores.other, 
+  invisible(list(scores = scores, cl = cl, other = scores.other,
                  cl.other = cl.other, nfeatures = nfeatures))
 }
 }

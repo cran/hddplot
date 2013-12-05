@@ -8,25 +8,28 @@ that are unhelpfully large.  This function handles the problem by
 removing points that are, for all practical purposes, redundant
 }
 \usage{
-qqthin(x, y, ends = c(0.01, 0.99), eps = 0.001, xlab = deparse(substitute(x)), adj.xlab = NULL, ylab = deparse(substitute(y)), show.line = TRUE, centerline = TRUE, ...)
+qqthin(x, y, ends = c(0.01, 0.99), eps = 0.001, xlab = deparse(substitute(x)),
+       adj.xlab = NULL, ylab = deparse(substitute(y)), show.line = TRUE,
+       print.thinning.details=TRUE, centerline = TRUE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{ordered values of \code{x} will be plotted on the x-axis}
   \item{y}{ordered values of \code{y} will be plotted on the y-axis}
-  \item{ends}{outside these cumulative proportions of numbers of points, 
+  \item{ends}{outside these cumulative proportions of numbers of points,
 all points will be included in the graph}
   \item{eps}{controls the extent of overplotting}
   \item{xlab}{label for x-axis}
   \item{adj.xlab}{positioning of x-label}
   \item{ylab}{label for y-axis}
   \item{show.line}{logical; show the line y=x?}
+  \item{print.thinning.details}{logical; print number of points after thinning?}
   \item{centerline}{logical; draw a line though the part of the graph where
 some points have been omitted?}
   \item{\dots}{additional graphics parameters}
 }
 \value{
-Gives a qqplot
+Gives a qqplot. The number of points retained is returned invisibly.
 }
 \references{ ~put references to the literature/web site here ~ }
 \author{John Maindonald}
@@ -38,9 +41,10 @@ qqthin(qf(ppoints(length(Fstats)), 2, 17), Fstats, eps=0.01)
 
 
 ## The function is currently defined as
-function(x, y, ends=c(.01,.99), eps=0.001, 
+function(x, y, ends=c(.01,.99), eps=0.001,
            xlab = deparse(substitute(x)), adj.xlab=NULL,
            ylab = deparse(substitute(y)), show.line=TRUE,
+           print.thinning.details=TRUE,
            centerline=TRUE, ...){
     ## qqthin() is a substitute for qqplot(), that thins
     ## out plotted points from the region where they are
@@ -80,12 +84,14 @@ function(x, y, ends=c(.01,.99), eps=0.001,
     n2 <- max(subs[c(0,diff(subs))>1])
     ns1 <- match(n1, subs)
     ns2 <- match(n2, subs)
-    print(paste("Graph retains", length(subs), "points."))
+    if(print.thinning.details)
+       print(paste("Graph retains", length(subs), "points."))
     if(centerline)
       lines(smooth.spline(x[subs[ns1:ns2]], y[subs[ns1:ns2]]),
             col="grey", lwd=2)
 	    }
     if(show.line)abline(0, 1, col="red")
+invisible(length(subs))
   }
 }
 \keyword{hplot}% at least one, from doc/KEYWORDS

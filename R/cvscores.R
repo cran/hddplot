@@ -1,9 +1,7 @@
 "cvscores" <-
-function(cvlist=BMonly.cv, nfeatures=3, ndisc=NULL,
-           cl.other=factor("PB:f"), x.other=Golub.PBf,
+function(cvlist, nfeatures, ndisc=NULL, cl.other, x.other,
            keepcols=NULL, print.progress=TRUE
            ){
-    library(MASS)
     foldids <- cvlist$foldids
     nfold <- c(length(unique(foldids)), dim(foldids)[2])
 
@@ -30,7 +28,7 @@ function(cvlist=BMonly.cv, nfeatures=3, ndisc=NULL,
     else other.scores <- NULL
     for(k in 1:nfold[2]){
       foldk <- foldids[,k]
-      ufold <- sort(unique(foldk))      
+      ufold <- sort(unique(foldk))
       j <- 0
       for(i in ufold){
         j <- j+1
@@ -56,7 +54,7 @@ function(cvlist=BMonly.cv, nfeatures=3, ndisc=NULL,
     fitscores <- array(0, dim=c(nrow=nobs, ncol=ndisc, nleaf=nfold[2]))
     for(k in 1:nfold[2]){
       foldk <- foldids[,k]
-      ufold <- sort(unique(foldk))    
+      ufold <- sort(unique(foldk))
 ##      ntimes.genes <- table(cvlist$genelist[1:nfeatures,,k])
       av <- colMeans(df)
       j <- 0
@@ -84,7 +82,7 @@ function(cvlist=BMonly.cv, nfeatures=3, ndisc=NULL,
       }
     }
     fitscores <- apply(fitscores, 1:2, mean)
-    
+
     if(!is.null(cl.other)){
       Fmatrix <- cvlist$Fmatrix
       ord <- order(Fmatrix)[1:nfeatures]
@@ -102,7 +100,7 @@ function(cvlist=BMonly.cv, nfeatures=3, ndisc=NULL,
       trans <- qr.solve(train.scores, all.scores)
       other.scores <- sweep(other.scores%*%trans, 2, avcol, "+")
     }
-    if(print.progress)cat("\n")    
+    if(print.progress)cat("\n")
     invisible(list(scores=fitscores, cl=cl, other=other.scores,
                    cl.other=cl.other, nfeatures=nfeatures))
   }

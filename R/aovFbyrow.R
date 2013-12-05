@@ -1,5 +1,5 @@
 "aovFbyrow" <-
-function(x=Golub, cl=golub.info$cancer){
+function(x=matrix(rnorm(1000),ncol=20), cl = factor(rep(1:3, c(7,9,4)))){
     y <- t(x)
     qr.obj <- qr(model.matrix(~cl))
     qty.obj <- qr.qty(qr.obj,y)

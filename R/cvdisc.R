@@ -1,5 +1,5 @@
 "cvdisc" <-
-function(x=GolubB, cl=tissue.mfB, nfold=c(10,1), test="f",
+function(x, cl, nfold=c(10,1), test="f",
            nfeatures=2, seed=31, funda=lda, print.progress=TRUE,
            subset=NULL){
     ## If nfold is not specified, use leave-one-out CV
@@ -22,7 +22,6 @@ function(x=GolubB, cl=tissue.mfB, nfold=c(10,1), test="f",
       print(paste(1,":", dim(x)[1], " will be assigned.", sep=""))
       rownames(x) <- genes
     }
-    require(MASS)
     if(!is.null(seed))set.seed(seed)
     Fcut <- NULL
     maxgenes <- max(nfeatures)
@@ -61,7 +60,7 @@ function(x=GolubB, cl=tissue.mfB, nfold=c(10,1), test="f",
     for(k in 1:nfold[2])
       {
         foldk <- foldids[,k]
-        ufold <- sort(unique(foldk))      
+        ufold <- sort(unique(foldk))
       for(i in ufold){
         testset <- (1:nobs)[foldk==i]
         trainset <- (1:nobs)[foldk!=i]

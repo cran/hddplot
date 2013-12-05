@@ -6,12 +6,12 @@
 Returns on aov F-statistic for each row of \code{x}
 }
 \usage{
-aovFbyrow(x = Golub, cl = golub.info$cancer)
+aovFbyrow(x=matrix(rnorm(1000), ncol=20), cl = factor(rep(1:3, c(7,9,4))))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{features by observations matrix}
-  \item{cl}{fact that classifies the values in each row}
+  \item{cl}{factor that classifies the values in each row}
 }
 \details{
 This uses the functions \code{qr()} and \code{qr.qty()} for the main
@@ -28,8 +28,8 @@ cl <- factor(rep(1:3, c(7,9,4)))
 Fstats <- aovFbyrow(x = mat, cl = cl)
 
 ## The function is currently defined as
-aovFbyrow <- 
-function(x=matrix(rnorm(1000), ncol=20), 
+aovFbyrow <-
+function(x=matrix(rnorm(1000), ncol=20),
          cl=factor(rep(1:3, c(7,9,4)))){
     y <- t(x)
     qr.obj <- qr(model.matrix(~cl))
