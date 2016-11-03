@@ -1,5 +1,5 @@
 "pcp" <-
-function(x=USArrests,
+function(x=datasets::USArrests,
            varscores=TRUE,
            cases="rows",
            center="vars",

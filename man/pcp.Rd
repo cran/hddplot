@@ -8,7 +8,7 @@ Packages results from an SVD on what can be either a cases by variables
 and related calculations
 }
 \usage{
-pcp(x = USArrests, varscores = TRUE, cases = "rows", center = "vars",
+pcp(x = datasets::USArrests, varscores = TRUE, cases = "rows", center = "vars",
     standardize = FALSE, scale.cases = 1, log = FALSE, sc = 1, reflect = c(1, 1))
 }
 %- maybe also 'usage' for other objects documented here.
@@ -41,10 +41,10 @@ the number of cases}
 \author{John Maindonald}
 \seealso{\code{\link{La.svd}}}
 \examples{
-USArrests.svd <- pcp(x = USArrests)
+USArrests.svd <- pcp(x = datasets::USArrests)
 
 ## The function is currently defined as
-function(x=USArrests,
+function(x=datasets::USArrests,
            varscores=TRUE,
            cases="rows",
            center="vars",

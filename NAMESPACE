@@ -5,3 +5,7 @@ export(accTrainTest, aovFbyrow, cvdisc, cvscores, defectiveCVdisc,
        simulateScores)
 import(MASS)
 importFrom(multtest, mt.maxT)
+importFrom("graphics", "abline", "legend", "lines", "mtext", "par",
+           "plot", "text")
+importFrom("stats", "df", "model.matrix", "predict", "rnorm", "sd",
+           "smooth.spline")

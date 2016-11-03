@@ -43,7 +43,7 @@ In R. May and A.J. Roberts, eds., \emph{Proceedings of 12th
   Computational Techniques and Applications Conference CTAC-2004}, volume 46,
   pp. C59--C74. 
 
-\url{http://anziamj.austms.org.au/V46/CTAC2004/Main} [March 15, 2005].
+\url{http://journal.austms.org.au/V46/CTAC2004/Main/home.html} [March 15, 2005].
 }
 \keyword{package}
 
