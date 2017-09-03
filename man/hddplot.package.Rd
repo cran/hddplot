@@ -37,7 +37,7 @@ in the plotting of expression array and other high-dimensional data
 Maintainer: John Maindonald <john.maindonald@anu.edu.au>
 }
 \references{
-Maindonald, J.H. and Burden, C.J., 2005. Selection bias in plots of
+J. H. Maindonald, C. J. Burden, 2005. Selection bias in plots of
 microarray or other data that have been sampled from a high-dimensional space.
 In R. May and A.J. Roberts, eds., \emph{Proceedings of 12th
   Computational Techniques and Applications Conference CTAC-2004}, volume 46,

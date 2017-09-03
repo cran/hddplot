@@ -103,7 +103,7 @@ par(opar)
 #  scoreplot(simscores)
 #  par(opar)
 
-## ----F-stats, results="hide"------------------------------------------
+## ----F-stats, results="hide", warning=FALSE, message=FALSE------------
 ## In the following, B is too small for the simulation to give a
 ## good indication of behaviour in the extreme tail.
 library(multtest, quietly=TRUE)

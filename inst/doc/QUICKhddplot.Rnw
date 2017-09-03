@@ -146,7 +146,7 @@ getting spurious results with the methodology used for Panel A.}\label{fig:biase
 Calculated F-statistics (Figure \ref{fig:qq}) will be compared with the 
 permutation distribution and with the theoretical F-distribution. Code is:
 
-<<F-stats, results="hide">>=
+<<F-stats, results="hide", warning=FALSE, message=FALSE>>=
 ## In the following, B is too small for the simulation to give a
 ## good indication of behaviour in the extreme tail.
 library(multtest, quietly=TRUE)

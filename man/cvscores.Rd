@@ -33,7 +33,7 @@ as calculations proceed, the number of the current fold}
   \item{cl.other}{Factor that was used to classify the 'other' data into groups}
   \item{nfeatures}{Number of features used}
 }
-\references{Maindonald, J.H. and Burden, C.J., 2005. Selection bias in plots of
+\references{J. H. Maindonald and C. J. Burden, 2005. Selection bias in plots of
 microarray or other data that have been sampled from a high-dimensional space.
 In R. May and A.J. Roberts, eds., \emph{Proceedings of 12th
   Computational Techniques and Applications Conference CTAC-2004}, volume 46,
