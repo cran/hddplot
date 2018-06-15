@@ -6,15 +6,13 @@
 There is provision for the plottting of two sets of scores on the same
 graph, possibly with different classifying factors.  The function is
 designed for use with output from \code{cvscores()} or from
-\code{simulateScores()}. This is an alpha version!  Suggestions for
-code changes and/or enhancements that will improve the graphs will be
-welcomed.
+\code{simulateScores()}. 
 }
 \usage{
 scoreplot(scorelist, plot.disc = 1:2, xlab = NULL, ylab = NULL, params = NULL,
           circle = NULL, cl.circle = NULL, circle.pos = c(1, 1), adj.circle = 1,
           adj.title = 0.5, join.legends = TRUE, prefix.title = "", cex.title = 1,
-          ratio = 1, plot.folds = FALSE)
+          ratio = 1, plot.folds = FALSE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -47,6 +45,7 @@ etc.}
   \item{plot.folds}{Plot individual fold information, comparing projected
 training scores with their projections onto the global space.  This is
 not at present implemented}
+\item{...}{Other parameters to be passed to \code{eqscplot()}}
 }
 \value{
 A graph is plotted.
@@ -78,7 +77,7 @@ detach(golubInfo)
            circle=NULL, cl.circle=NULL, circle.pos=c(1,1),
            adj.circle=1,
            adj.title=0.5, join.legends=T, prefix.title="Golub data - ",
-           cex.title=1.0, ratio=1, plot.folds=FALSE ){
+           cex.title=1.0, ratio=1, plot.folds=FALSE, ...){
     library(MASS)
     combine.params <-
       function(params=list(circle=list(col=c("cyan","gray")))){
@@ -125,7 +124,7 @@ detach(golubInfo)
     oldpar <- par(lwd=1)
     on.exit(par(oldpar))
     eqscplot(n1lim, n2lim, type="n",
-             xlab=xlab, ylab=ylab, ratio=ratio)
+             xlab=xlab, ylab=ylab, ratio=ratio, ...)
     with(params$points,
          points(fitscores[,n1], fitscores[,n2], col=col[intlev],
                 pch=pch[intlev], cex=cex, lwd=lwd))

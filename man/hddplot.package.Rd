@@ -2,16 +2,22 @@
 \alias{hddplot-package}
 \alias{hddplot}
 \docType{package}
-\title{For high-dimensional data with known groups, derive scores for plotting}
-\description{Cross-validated linear discriminant calculations
+\title{
+\packageTitle{hddplot}
+}
+\description{
+\packageDescription{hddplot}
+}
+\details{
+The DESCRIPTION file:
+\packageDESCRIPTION{hddplot}
+\packageIndices{hddplot}
+Cross-validated linear discriminant calculations
 determine the optimum number of features. Test and training
 scores from successive cross-validation steps determine, via a
 principal components calculation, a low-dimensional global space onto
 which test scores are projected, in order to plot them. Further functions
 are included for didactic purposes. 
-}
-
-\details{
 \tabular{ll}{
 Package: \tab hddplot\cr
 Type: \tab Package\cr
@@ -32,9 +38,10 @@ to avoid generating large files when there are many points), and
 functions that are intended to illustrate issues that arise
 in the plotting of expression array and other high-dimensional data
 }
-\author{John Maindonald
+\author{
+\packageAuthor{hddplot}
 
-Maintainer: John Maindonald <john.maindonald@anu.edu.au>
+Maintainer: \packageMaintainer{hddplot}
 }
 \references{
 J. H. Maindonald, C. J. Burden, 2005. Selection bias in plots of

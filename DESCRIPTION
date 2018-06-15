@@ -2,8 +2,8 @@ Package: hddplot
 Type: Package
 Title: Use Known Groups in High-Dimensional Data to Derive Scores for
         Plots
-Version: 0.57-5
-Date: 2017-09-03
+Version: 0.59
+Date: 2018-06-15
 Author: John Maindonald
 Maintainer: John Maindonald <jhmaindonald@gmail.com>
 VignetteBuilder: knitr
@@ -25,5 +25,5 @@ License: GPL (>= 2)
 URL: http://maths-people.anu.edu.au/~johnm/
 Repository: CRAN
 NeedsCompilation: no
-Packaged: 2017-09-03 08:17:52 UTC; johnm1
-Date/Publication: 2017-09-03 11:31:27 UTC
+Packaged: 2018-06-15 09:10:51 UTC; johnm1
+Date/Publication: 2018-06-15 19:55:43 UTC

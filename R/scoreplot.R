@@ -2,7 +2,7 @@ scoreplot <-
 function (scorelist, plot.disc = 1:2, xlab = NULL,
             ylab = NULL, params = NULL, circle = NULL, cl.circle = NULL,
             circle.pos = c(1, 1), adj.circle = 1, adj.title = 0.5, join.legends = TRUE,
-            prefix.title = "", cex.title = 1, ratio = 1, plot.folds = FALSE)
+            prefix.title = "", cex.title = 1, ratio = 1, plot.folds = FALSE, ...)
 {
   combine.params <- function(params = list(circle = list(col = c("cyan",
                                                            "gray")))) {
@@ -57,7 +57,7 @@ function (scorelist, plot.disc = 1:2, xlab = NULL,
   oldpar <- par(lwd = 1)
   on.exit(par(oldpar))
   eqscplot(n1lim, n2lim, type = "n", xlab = xlab, ylab = ylab,
-           ratio = ratio)
+           ratio = ratio, ...)
   with(params$points, points(fitscores[, n1], fitscores[, n2],
                              col = col[intlev], pch = pch[intlev], cex = cex, lwd = lwd))
   if (!is.null(cl.other))
