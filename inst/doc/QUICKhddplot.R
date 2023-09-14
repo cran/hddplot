@@ -104,11 +104,14 @@ par(opar)
 #  par(opar)
 
 ## ----F-stats, results="hide", warning=FALSE, message=FALSE------------
-## In the following, B is too small for the simulation to give a
-## good indication of behaviour in the extreme tail.
+## In the following, B is too small for the simulation to 
+## give a good indication of behavior in the extreme tail.
+## Code should be re-run with B >> 1000.
 library(multtest, quietly=TRUE)
-GolubB.maxT <- mt.maxT(GolubB, unclass(tissue.mfB)-1, test="f",
-                       B=1000)
+cl.mfB <- unname(unclass(tissue.mfB)-1)  
+  ## NB: Use unnamed integer vector to identify classes,
+  ## here with values running from 0 to 2
+GolubB.maxT <- mt.maxT(GolubB, cl.mfB, test="f", B=1000)
 
 ## ----qq-Fstats, eval=FALSE--------------------------------------------
 #  ## Compare calculated F-statistics with permutation distribution
@@ -143,11 +146,14 @@ qqthin(qf(ppoints(7129), 2, 28), qf(1-GolubB.maxT$rawp, 2, 28),
   # overlap is substantial, thus giving smaller graphics files.
 
 ## ----F-stats, eval=FALSE----------------------------------------------
-#  ## In the following, B is too small for the simulation to give a
-#  ## good indication of behaviour in the extreme tail.
+#  ## In the following, B is too small for the simulation to
+#  ## give a good indication of behavior in the extreme tail.
+#  ## Code should be re-run with B >> 1000.
 #  library(multtest, quietly=TRUE)
-#  GolubB.maxT <- mt.maxT(GolubB, unclass(tissue.mfB)-1, test="f",
-#                         B=1000)
+#  cl.mfB <- unname(unclass(tissue.mfB)-1)
+#    ## NB: Use unnamed integer vector to identify classes,
+#    ## here with values running from 0 to 2
+#  GolubB.maxT <- mt.maxT(GolubB, cl.mfB, test="f", B=1000)
 
 ## ----qq-Fstats, eval=FALSE--------------------------------------------
 #  ## Compare calculated F-statistics with permutation distribution

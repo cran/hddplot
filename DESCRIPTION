@@ -2,8 +2,8 @@ Package: hddplot
 Type: Package
 Title: Use Known Groups in High-Dimensional Data to Derive Scores for
         Plots
-Version: 0.59
-Date: 2018-06-15
+Version: 0.59-2
+Date: 2023-09-13
 Author: John Maindonald
 Maintainer: John Maindonald <jhmaindonald@gmail.com>
 VignetteBuilder: knitr
@@ -15,6 +15,7 @@ Description: Cross-validated linear discriminant calculations determine
   included that are intended for didactic use. The  package implements,
   and extends, methods described in J.H. Maindonald and C.J. Burden (2005)
   <https://journal.austms.org.au/V46/CTAC2004/Main/home.html>.
+URL: https://github.com/jhmaindonald/hddplot
 LazyLoad: true
 LazyData: true
 Depends: R (>= 3.0.0)
@@ -22,8 +23,7 @@ Imports: MASS, multtest
 Suggests: knitr
 ZipData: yes
 License: GPL (>= 2)
-URL: http://maths-people.anu.edu.au/~johnm/
 Repository: CRAN
 NeedsCompilation: no
-Packaged: 2018-06-15 09:10:51 UTC; johnm1
-Date/Publication: 2018-06-15 19:55:43 UTC
+Packaged: 2023-09-14 02:53:13 UTC; johnm1
+Date/Publication: 2023-09-14 04:40:03 UTC

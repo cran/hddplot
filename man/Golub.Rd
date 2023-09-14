@@ -6,7 +6,7 @@
 These are a normalized version of the Golub leukemia data from the
 \code{golubEsets} package, available from:
 
-\url{http://www.bioconductor.org/download/experiments/}
+\url{https://www.bioconductor.org/packages/release/data/experiment/}
 }
 \usage{data(Golub)}
 \format{

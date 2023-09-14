@@ -83,7 +83,7 @@ boxplot(data.frame(GolubB[, 1:20]))  # First 20 columns (observations)
 ## Random selection of 20 rows (features)
 boxplot(data.frame(GolubB[sample(1:7129, 20), ]))
 @ %
-\caption{Coxplots of distributions across features for a selection of observations}
+\caption{Boxplots of distributions across features for a selection of observations}
 \end{figure}
 
 <<Boxplots, eval=FALSE>>=
@@ -143,15 +143,19 @@ getting spurious results with the methodology used for Panel A.}\label{fig:biase
 
 \section{Distributional extremes}
 
-Calculated F-statistics (Figure \ref{fig:qq}) will be compared with the 
-permutation distribution and with the theoretical F-distribution. Code is:
+Calculated F-statistics (Figure \ref{fig:qq}) will be compared with 
+the permutation distribution and with the theoretical F-distribution,
+but limiting attention to just the first two classes. Code is:
 
 <<F-stats, results="hide", warning=FALSE, message=FALSE>>=
-## In the following, B is too small for the simulation to give a
-## good indication of behaviour in the extreme tail.
+## In the following, B is too small for the simulation to 
+## give a good indication of behavior in the extreme tail.
+## Code should be re-run with B >> 1000.
 library(multtest, quietly=TRUE)
-GolubB.maxT <- mt.maxT(GolubB, unclass(tissue.mfB)-1, test="f",
-                       B=1000)
+cl.mfB <- unname(unclass(tissue.mfB)-1)  
+  ## NB: Use unnamed integer vector to identify classes,
+  ## here with values running from 0 to 2
+GolubB.maxT <- mt.maxT(GolubB, cl.mfB, test="f", B=1000)
 @ %
 
 <<qq-Fstats, eval=FALSE>>=
